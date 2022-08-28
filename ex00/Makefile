@@ -1,4 +1,4 @@
-NAME = materia
+NAME = bureaucrat
 
 CC = c++
 
