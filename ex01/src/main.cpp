@@ -1,4 +1,6 @@
 #include "../incl/Bureaucrat.hpp"
+#include "../incl/Form.hpp"
+
 
 int	main()
 {
@@ -9,11 +11,10 @@ int	main()
 		Bureaucrat jolly("jolly", 1);
 
 		std::cout << romy << std::endl;
+		// std::cout << holly << std::endl;
 		std::cout << jolly << std::endl;
 		jolly.decrementGrade();
-		Bureaucrat holly(jolly);
 		std::cout << jolly << std::endl;
-		std::cout << holly << std::endl;
 
 
 	}
@@ -24,4 +25,3 @@ int	main()
 	//woher weiss er, dass er meine exceptionClass nehmen muss??
 	return(0);
 }
-//wie kann ich da noch machen, dass der name von dem bad_bureaucrat angezeigt wird?

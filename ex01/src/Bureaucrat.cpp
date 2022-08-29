@@ -20,9 +20,9 @@ Bureaucrat::Bureaucrat(std::string const name, int grade): _name(name), _grade(g
 		//Bureaucrat::GradeTooLowException
 }
 
-Bureaucrat::Bureaucrat( const Bureaucrat & src )
+Bureaucrat::Bureaucrat( const Bureaucrat & src ): _name(src._name), _grade(src._grade)
 {
-	*this = src;
+	// *this = src;
 }
 //heir noch checken ob auch wirklich 0 151 gecatcht wird
 //ohne dass man haendisch etwas zuweist
@@ -88,10 +88,17 @@ const char* Bureaucrat::GradeTooHighException::what() const throw()
 	return ("Grade is too high.");
 }
 
+void			Bureaucrat::signForm(Form const & form)
+{
+	if (form.getFormStatus())
+		std::cout << this->_name << " signed " << form.getName() << std::endl;
+	else	
+		std::cout << this->_name << " couldn't sign " << form.getName() << " because of insufficient rank." << std::endl;
+}
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
-std::string		Bureaucrat::getName()const
+std::string	Bureaucrat::getName()const
 {
 	return (this->_name);
 }
@@ -103,7 +110,8 @@ int				Bureaucrat::getGrade()const
 
 
 /* 
-wenn die Klasse, die eine Function benutzt const ist, muss die function auch const sein??
-i want to understand the context, when does what apply?
+wenn die Klasse, die eine Function benutzt const ist, muss die function auch const sein
+
+************************************************************************** 
 */
 
