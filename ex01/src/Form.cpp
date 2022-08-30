@@ -79,6 +79,7 @@ void			Form::beSigned(Bureaucrat const & b)
 	else
 		throw GradeTooLowException();
 }
+//and here it just stops running the code then?
 
 
 /*

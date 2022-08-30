@@ -65,18 +65,19 @@ void				Bureaucrat::incrementGrade()
 {
 	this->_grade++;
 	if (this->_grade > 150)
+	{
+		std::cout << this->_name << "'s ";
 		throw GradeTooLowException();
-	//Bureaucrat::GradeTooHighException 
-	//Bureaucrat::GradeTooLowException
-
+	}
 }
 void				Bureaucrat::decrementGrade()
 {
 	this->_grade--;
 	if (this->_grade == 0)
+	{
+		std::cout << this->_name << "'s ";
 		throw GradeTooHighException();
-	//Bureaucrat::GradeTooHighException 
-	//Bureaucrat::GradeTooLowException
+	}
 }
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
@@ -88,13 +89,19 @@ const char* Bureaucrat::GradeTooHighException::what() const throw()
 	return ("Grade is too high.");
 }
 
-void			Bureaucrat::signForm(Form const & form)
+void			Bureaucrat::signForm(Form & form)
 {
-	if (form.getFormStatus())
-		std::cout << this->_name << " signed " << form.getName() << std::endl;
-	else	
-		std::cout << this->_name << " couldn't sign " << form.getName() << " because of insufficient rank." << std::endl;
+	try
+	{
+			form.beSigned(*this);
+			std::cout << this->_name << " signed " << form.getName() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << this->_name << " couldn't sign " << form.getName() << " because of " << e.what() << '\n';
+	}
 }
+//ah das beendet das Programm jetzt nicht direkt?
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */

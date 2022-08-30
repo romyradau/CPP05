@@ -6,22 +6,22 @@ int	main()
 {
 
 	try{
-		Bureaucrat romy("romy", 111);
-		// Bureaucrat holly("holly", 151);
-		Bureaucrat jolly("jolly", 1);
+		Bureaucrat romy("romy", 1);
+		Bureaucrat holly("holly", 150);
+		Form form1("auslanderbehoerde", 20, 50);
+		holly.signForm(form1);
+		romy.signForm(form1);
+		romy.decrementGrade();
+		holly.incrementGrade();
 
 		std::cout << romy << std::endl;
-		// std::cout << holly << std::endl;
-		std::cout << jolly << std::endl;
-		jolly.decrementGrade();
-		std::cout << jolly << std::endl;
-
+		std::cout << form1 << std::endl;
 
 	}
 	catch (std::exception& e)
 	{
 		std::cout << e.what() << std::endl;
 	}
-	//woher weiss er, dass er meine exceptionClass nehmen muss??
+	
 	return(0);
 }
