@@ -14,8 +14,8 @@ int	main()
 		// std::cout << sh << std::endl;
 		// std::cout << af << std::endl;
  
-		Bureaucrat romy("romy", 2);
-		Bureaucrat holly("holly", 150);
+		Bureaucrat romy("romy", 1);
+		Bureaucrat holly("holly", 6);
 		ShrubberyCreationForm shrub("ChristmasCard");
 		ShrubberyCreationForm shrubCopy(shrub);
 		std::cout << shrubCopy << std::endl;
@@ -31,14 +31,18 @@ int	main()
 		// shrub.execute(holly);
 		shrub.execute(romy);
 		holly.executeForm(shrub);
-		romy.executeForm(shrub);
-		romy.executeForm(robo);
-		romy.executeForm(pres);
+		// romy.executeForm(shrub);
+		// romy.executeForm(robo);
+		// romy.executeForm(pres);
+		std::cout << std::endl;
+		holly.executeForm(pres);
+		holly.incrementGrade();
+		holly.executeForm(pres);
+		std::cout << std::endl;
 
 		romy.incrementGrade();
 		std::cout << romy << std::endl;
 
-		holly.decrementGrade();
 
 		std::cout << shrub << std::endl;
 		std::cout << robo << std::endl;
