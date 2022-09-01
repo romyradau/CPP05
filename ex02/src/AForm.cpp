@@ -70,18 +70,30 @@ const char* AForm::GradeTooHighException::what() const throw()
 {
 	return ("Grade is TOO high.");
 }
-
+const char* AForm::FormNotSigned::what() const throw()
+{
+	return ("Form not signed yet.");
+}
 
 void	AForm::execute(Bureaucrat const & executor) const
 {
-	if (this->_signed && executor.getGrade() <= this->_exec_grade)
+	if (!this->_signed)
 	{
-		//do the stuff
+		throw FormNotSigned();
+	}
+	if (executor.getGrade() <= this->_exec_grade)
+	{
+		executeConcreteForm(*this);
 	}
 	else
-		throw GradeTooLowException
+	{
+		// std::cout << executor.getName() << "'s ";
+		throw GradeTooLowException();
+	}
 }
-//stopp ??? welcher fall ist besser
+//sobald man std:;cout dazu amcjt
+//wird die exception hier schon geprinted, das will man hier aber nicht
+
 
 void			AForm::beSigned(Bureaucrat const & b)
 {

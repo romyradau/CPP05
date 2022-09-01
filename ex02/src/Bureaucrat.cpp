@@ -61,7 +61,7 @@ std::ostream &			operator<<( std::ostream & o, Bureaucrat const & i )
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void				Bureaucrat::incrementGrade()
+void				Bureaucrat::decrementGrade()
 {
 	this->_grade++;
 	if (this->_grade > 150)
@@ -70,7 +70,7 @@ void				Bureaucrat::incrementGrade()
 		throw GradeTooLowException();
 	}
 }
-void				Bureaucrat::decrementGrade()
+void				Bureaucrat::incrementGrade()
 {
 	this->_grade--;
 	if (this->_grade == 0)
@@ -101,7 +101,19 @@ void			Bureaucrat::signForm(AForm& form)
 		std::cerr << this->_name << " couldn't sign " << form.getName() << " because of " << e.what() << '\n';
 	}
 }
-
+void	Bureaucrat::executeForm(AForm const & form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << this->_name << " executed " << form.getName() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << this->_name << " couldn't execute " << form.getName() << " because of " << e.what() << '\n';
+	}
+	
+}
 //executeForm(Form const & form)
 //hier sowas wie die signForm function
 //form.execute

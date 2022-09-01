@@ -3,6 +3,7 @@
 
 # include <iostream>
 # include <string>
+#include <fstream>
 # include "Bureaucrat.hpp"
 
 class Bureaucrat;
@@ -22,15 +23,20 @@ class AForm
 			public:
 				const char* what() const throw();
 		};
+		class FormNotSigned: public std::exception
+		{
+			public:
+				const char* what() const throw();
+		};
 		AForm();
 		AForm(std::string name, int sign, int exec);
 		AForm( AForm const & src );
-		~AForm();
+		virtual ~AForm();
 
 		AForm &		operator=( AForm const & rhs );
 
 		void				execute(Bureaucrat const & executor) const;
-		//die vielleicht absolute virtual machen?
+		virtual void		executeConcreteForm(AForm const & form) const  = 0;
 		void				beSigned(Bureaucrat const & b);
 		std::string			getName()const;
 		bool				getFormStatus()const;
