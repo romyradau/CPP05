@@ -8,7 +8,8 @@ int	main()
 	try{
 		Bureaucrat romy("romy", 1);
 		Bureaucrat holly("holly", 150);
-		Form form1("auslanderbehoerde", 20, 50);
+		Form form1("auslanderbehoerde", 51, 50);
+		// form1.beSigned(holly);
 		holly.signForm(form1);
 		romy.signForm(form1);
 		romy.decrementGrade();

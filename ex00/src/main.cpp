@@ -4,16 +4,16 @@ int	main()
 {
 
 	try{
-		Bureaucrat romy("romy", 111);
-		// Bureaucrat holly("holly", 151);
+		Bureaucrat romy("romy", 151);
+		Bureaucrat holly("holly", 150);
 		Bureaucrat jolly("jolly", 1);
 
-		std::cout << romy << std::endl;
+		// std::cout << romy << std::endl;
 		std::cout << jolly << std::endl;
-		jolly.decrementGrade();
-		Bureaucrat holly(jolly);
+		jolly.incrementGrade();
+		Bureaucrat olly(jolly);
 		std::cout << jolly << std::endl;
-		std::cout << holly << std::endl;
+		std::cout << olly << std::endl;
 
 
 	}
@@ -21,7 +21,6 @@ int	main()
 	{
 		std::cout << e.what() << std::endl;
 	}
-	//woher weiss er, dass er meine exceptionClass nehmen muss??
+	//how does the program recognize my special execption calss and stores it in there?
 	return(0);
 }
-//wie kann ich da noch machen, dass der name von dem bad_bureaucrat angezeigt wird?

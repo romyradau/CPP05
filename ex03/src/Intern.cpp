@@ -50,7 +50,6 @@ AForm*			Intern::makeForm(std::string form_name, std::string target)
 	{
 		if (forms[i] == form_name)
 			form_num = i;
-			break;
 	}
 	switch (form_num)
 	{

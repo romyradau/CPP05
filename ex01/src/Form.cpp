@@ -10,14 +10,19 @@ Form::Form(): _name("emptyform"), _sign_grade(75), _exec_grade(75), _signed(fals
 Form::Form(std::string name, int sign, int exec): _name(name), _sign_grade(sign), _exec_grade(exec), _signed(false)
 {
 	if (_sign_grade > 150 || _exec_grade > 150)
+	{
+		std::cout << "the form's ";
 		throw GradeTooLowException();
+	}
 	if (_sign_grade <= 0 || _exec_grade <= 0)
+	{
+		std::cout << "the form's ";
 		throw GradeTooHighException();
+	}
 }
 
 Form::Form( const Form & src ): _name(src._name), _sign_grade(src._sign_grade), _exec_grade(src._exec_grade), _signed(src._signed)
 {
-	// *this = src;
 }
 
 
@@ -38,10 +43,7 @@ Form &				Form::operator=( Form const & rhs )
 {
 	if ( this != &rhs )
 	{
-		// this->_name = rhs.getName();
 		this->_signed = rhs.getFormStatus();
-		// this->_sign_grade = rhs.getSignGrade();
-		// this->_exec_grade = rhs.getExecGrade();
 	}
 	return *this;
 }
@@ -79,7 +81,7 @@ void			Form::beSigned(Bureaucrat const & b)
 	else
 		throw GradeTooLowException();
 }
-//and here it just stops running the code then?
+
 
 
 /*

@@ -11,21 +11,20 @@ Bureaucrat::Bureaucrat(): _name("noname"), _grade(75)
 Bureaucrat::Bureaucrat(std::string const name, int grade): _name(name), _grade(grade)
 {
 		if (grade > 150)
+		{
+			std::cout << this->_name << "'s ";
 			throw GradeTooLowException();
-			// throw std::out_of_range("toolow");
-
+		}
 		if (grade <= 0)
+		{
+			std::cout << this->_name << "'s ";
 			throw GradeTooHighException();
-		//Bureaucrat::GradeTooHighException 
-		//Bureaucrat::GradeTooLowException
+		}
 }
 
 Bureaucrat::Bureaucrat( const Bureaucrat & src ): _name(src._name), _grade(src._grade)
 {
-	// *this = src;
 }
-//heir noch checken ob auch wirklich 0 151 gecatcht wird
-//ohne dass man haendisch etwas zuweist
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
@@ -43,10 +42,7 @@ Bureaucrat::~Bureaucrat()
 Bureaucrat &				Bureaucrat::operator=( Bureaucrat const & rhs )
 {
 	if ( this != &rhs )
-	{
-		// this->_name = rhs.getName();
 		this->_grade = rhs.getGrade();
-	}
 	return *this;
 }
 
@@ -114,10 +110,6 @@ void	Bureaucrat::executeForm(AForm const & form)
 	}
 	
 }
-//executeForm(Form const & form)
-//hier sowas wie die signForm function
-//form.execute
-//ah das beendet das Programm jetzt nicht direkt?
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
@@ -133,8 +125,6 @@ int				Bureaucrat::getGrade()const
 
 
 /* 
-wenn die Klasse, die eine Function benutzt const ist, muss die function auch const sein
-
 ************************************************************************** 
 */
 

@@ -11,7 +11,7 @@ int	main()
 
 	try{
 // 		// ShrubberyCreationForm sh;
-// 		// AForm af("SexualharrassmentForm", 111, 99);
+		AForm * af = new ShrubberyCreationForm("SexualharrassmentForm");
 // 		// std::cout << sh << std::endl;
 // 		// std::cout << af << std::endl;
  
@@ -47,7 +47,10 @@ int	main()
 
 		Intern someRandomIntern;
 		AForm* rrf;
-		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+		romy.executeForm(*af);
+		rrf = someRandomIntern.makeForm("PresidentialPardonForm", "Bender");
+		// rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+		romy.signForm(*rrf);
 		romy.executeForm(*rrf);
 
 		// std::cout << shrub << std::endl;
@@ -62,7 +65,3 @@ int	main()
 	
 	return(0);
 }
-//try and catch in den functions  = mai code lauft weiter
-//tya nd catch in main = code hoert auf
-//warum braucht man hier keinen getter?(Robotomyoperator=)
-//weils selbst ein robotomy ist

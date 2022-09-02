@@ -82,13 +82,8 @@ void	AForm::execute(Bureaucrat const & executor) const
 	if (executor.getGrade() <= this->_exec_grade)
 		executeConcreteForm(*this);
 	else
-	{
-		// std::cout << executor.getName() << "'s ";
 		throw GradeTooLowException();
-	}
 }
-//sobald man std:;cout dazu amcjt
-//wird die exception hier schon geprinted, das will man hier aber nicht
 
 
 void			AForm::beSigned(Bureaucrat const & b)
@@ -98,7 +93,6 @@ void			AForm::beSigned(Bureaucrat const & b)
 	else
 		throw GradeTooLowException();
 }
-//and here it just stops running the code then?
 
 
 /*

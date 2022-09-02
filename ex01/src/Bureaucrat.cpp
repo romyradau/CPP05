@@ -11,21 +11,20 @@ Bureaucrat::Bureaucrat(): _name("noname"), _grade(75)
 Bureaucrat::Bureaucrat(std::string const name, int grade): _name(name), _grade(grade)
 {
 		if (grade > 150)
+		{
+			std::cout << this->_name << "'s ";
 			throw GradeTooLowException();
-			// throw std::out_of_range("toolow");
-
+		}
 		if (grade <= 0)
+		{
+			std::cout << this->_name << "'s ";
 			throw GradeTooHighException();
-		//Bureaucrat::GradeTooHighException 
-		//Bureaucrat::GradeTooLowException
+		}
 }
 
 Bureaucrat::Bureaucrat( const Bureaucrat & src ): _name(src._name), _grade(src._grade)
 {
-	// *this = src;
 }
-//heir noch checken ob auch wirklich 0 151 gecatcht wird
-//ohne dass man haendisch etwas zuweist
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
@@ -44,7 +43,6 @@ Bureaucrat &				Bureaucrat::operator=( Bureaucrat const & rhs )
 {
 	if ( this != &rhs )
 	{
-		// this->_name = rhs.getName();
 		this->_grade = rhs.getGrade();
 	}
 	return *this;
@@ -61,7 +59,7 @@ std::ostream &			operator<<( std::ostream & o, Bureaucrat const & i )
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void				Bureaucrat::incrementGrade()
+void				Bureaucrat::decrementGrade()
 {
 	this->_grade++;
 	if (this->_grade > 150)
@@ -70,7 +68,7 @@ void				Bureaucrat::incrementGrade()
 		throw GradeTooLowException();
 	}
 }
-void				Bureaucrat::decrementGrade()
+void				Bureaucrat::incrementGrade()
 {
 	this->_grade--;
 	if (this->_grade == 0)
@@ -98,10 +96,10 @@ void			Bureaucrat::signForm(Form & form)
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << this->_name << " couldn't sign " << form.getName() << " because of " << e.what() << '\n';
+		std::cerr << this->_name << " couldn't sign " << form.getName() << " - " << e.what() << '\n';
 	}
 }
-//ah das beendet das Programm jetzt nicht direkt?
+
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
@@ -117,8 +115,6 @@ int				Bureaucrat::getGrade()const
 
 
 /* 
-wenn die Klasse, die eine Function benutzt const ist, muss die function auch const sein
-
 ************************************************************************** 
 */
 

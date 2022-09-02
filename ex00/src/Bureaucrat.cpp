@@ -11,22 +11,21 @@ Bureaucrat::Bureaucrat(): _name("noname"), _grade(75)
 Bureaucrat::Bureaucrat(std::string const name, int grade): _name(name), _grade(grade)
 {
 		if (grade > 150)
+		{
+			std::cout << this->_name << "'s ";
 			throw GradeTooLowException();
-			// throw std::out_of_range("toolow");
-
+		}
 		if (grade <= 0)
+		{
+			std::cout << this->_name << "'s ";
 			throw GradeTooHighException();
-		//Bureaucrat::GradeTooHighException 
-		//Bureaucrat::GradeTooLowException
+		}
 }
 
 Bureaucrat::Bureaucrat( const Bureaucrat & src )
 {
 	*this = src;
 }
-//heir noch checken ob auch wirklich 0 151 gecatcht wird
-//ohne dass man haendisch etwas zuweist
-
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
@@ -61,22 +60,23 @@ std::ostream &			operator<<( std::ostream & o, Bureaucrat const & i )
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void				Bureaucrat::incrementGrade()
+void				Bureaucrat::decrementGrade()
 {
 	this->_grade++;
 	if (this->_grade > 150)
+	{
+		std::cout << this->_name << "'s ";
 		throw GradeTooLowException();
-	//Bureaucrat::GradeTooHighException 
-	//Bureaucrat::GradeTooLowException
-
+	}
 }
-void				Bureaucrat::decrementGrade()
+void				Bureaucrat::incrementGrade()
 {
 	this->_grade--;
 	if (this->_grade == 0)
+	{
+		std::cout << this->_name << "'s ";
 		throw GradeTooHighException();
-	//Bureaucrat::GradeTooHighException 
-	//Bureaucrat::GradeTooLowException
+	}
 }
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
@@ -102,8 +102,5 @@ int				Bureaucrat::getGrade()const
 }
 
 
-/* 
-wenn die Klasse, die eine Function benutzt const ist, muss die function auch const sein??
-i want to understand the context, when does what apply?
-*/
+
 

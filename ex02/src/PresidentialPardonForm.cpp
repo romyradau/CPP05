@@ -24,7 +24,7 @@ PresidentialPardonForm::~PresidentialPardonForm()
 {
 	// std::cout << "PresidentialPardonForm Destructor" << std::endl;
 }
-//warum wird das zwischen die exception gethrowt?
+//why would that message show up between the exception message??
 
 
 /*
